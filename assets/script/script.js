@@ -25,18 +25,24 @@ btn.addEventListener('click',function(e) {
     cake.classList.add('sale');
     salad.classList.add('sale');
 
-    const pizzaNewPrice = pizzaNum - (pizzaNum * 0.2);
+    const discount = 0.2;
+
+    function calculateDiscountedPrice(price, discount) {
+        return price - (price * discount);
+    }
+
+    const pizzaNewPrice = calculateDiscountedPrice(pizzaNum, discount);
     pizzaNew.textContent = `${pizzaNewPrice.toLocaleString('ru-RU')} ₽ `;
 
-    const pastaNewPrice = pastaNum - (pastaNum * 0.2);
+    const pastaNewPrice = calculateDiscountedPrice(pastaNum, discount);
     pastaNew.textContent = `${pastaNewPrice.toLocaleString('ru-RU')} ₽ `;
 
-    const cakeNewPrice = cakeNum - (cakeNum * 0.2);
+    const cakeNewPrice = calculateDiscountedPrice(cakeNum, discount);
     cakeNew.textContent = `${cakeNewPrice.toLocaleString('ru-Ru')} ₽`;
 
-    const saladNewPrice = saladNum - (saladNum * 0.2);
-    saladNew.textContent = `${saladNewPrice} ₽`;
+    const saladNewPrice = calculateDiscountedPrice(saladNum, discount);
+    saladNew.textContent = `${saladNewPrice.toLocaleString('ru-Ru')} ₽`;
 
-    let resultSum = newSum - (newSum * 0.2);
+    let resultSum = newSum - (newSum * discount);
     sum.textContent =`${resultSum.toLocaleString('ru-RU')} ₽`;
 });
